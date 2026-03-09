@@ -1076,21 +1076,14 @@ static void Task_HandleMainMenuAPressed(u8 taskId)
         {
         case ACTION_NEW_GAME:
         default:
-            if (IS_FRLG)
-            {
-                DestroyTask(taskId);
-                FreeAllWindowBuffers();
-                if (action != ACTION_OPTION)
-                    sCurrItemAndOptionMenuCheck = 0;
-                else
-                    sCurrItemAndOptionMenuCheck |= OPTION_MENU_FLAG;  // entering the options menu
-                StartNewGameSceneFrlg();
-                return;
-            }
-
+            // Skip Birch speech entirely - go straight to roguelike gym mode
+            gSaveBlock2Ptr->playerGender = MALE;
+            NewGameBirchSpeech_SetDefaultPlayerName(0);
             gPlttBufferUnfaded[0] = RGB_BLACK;
             gPlttBufferFaded[0] = RGB_BLACK;
-            gTasks[taskId].func = Task_NewGameBirchSpeech_Init;
+            FreeAllWindowBuffers();
+            SetMainCallback2(CB2_NewGame);
+            DestroyTask(taskId);
             break;
         case ACTION_CONTINUE:
             gPlttBufferUnfaded[0] = RGB_BLACK;
