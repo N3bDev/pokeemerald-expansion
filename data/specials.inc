@@ -259,6 +259,7 @@ gSpecials::
 	def_special CallBattleFactoryFunction
 	def_special CallBattlePikeFunction
 	def_special CallBattlePyramidFunction
+	def_special CallRogueGymFunction
 	def_special StopMapMusic
 	def_special CallVerdanturfTentFunction
 	def_special CallFallarborTentFunction

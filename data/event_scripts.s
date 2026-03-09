@@ -536,6 +536,7 @@ gStdScripts_End::
 	.include "data/maps/BattleFrontier_ReceptionGate/scripts.inc"
 	.include "data/maps/BattleFrontier_Lounge8/scripts.inc"
 	.include "data/maps/BattleFrontier_Lounge9/scripts.inc"
+	.include "data/scripts/rogue_gym.inc"
 	.include "data/maps/BattleFrontier_PokemonCenter_1F/scripts.inc"
 	.include "data/maps/BattleFrontier_PokemonCenter_2F/scripts.inc"
 	.include "data/maps/BattleFrontier_Mart/scripts.inc"
