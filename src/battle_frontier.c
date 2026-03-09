@@ -165,6 +165,13 @@ static void DoFacilityTrainerBattleInternal(u8 facility)
         PlayMapChosenOrBattleBGM(0);
         BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_B_PYRAMID));
         break;
+    case FACILITY_BATTLE_ROGUE_GYM:
+        // Enemy party is pre-populated by RogueGym_SetupNextBattle
+        gBattleTypeFlags = BATTLE_TYPE_TRAINER | BATTLE_TYPE_BATTLE_TOWER;
+        CreateTask(Task_StartBattleAfterTransition, 1);
+        PlayMapChosenOrBattleBGM(0);
+        BattleTransition_StartOnField(GetSpecialBattleTransition(B_TRANSITION_GROUP_B_TOWER));
+        break;
     case FACILITY_BATTLE_TRAINER_HILL:
     default:
         break;

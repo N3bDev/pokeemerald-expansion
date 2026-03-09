@@ -449,6 +449,21 @@ struct BattleDomeTrainer
 #define DOME_TOURNAMENT_TRAINERS_COUNT 16
 #define BATTLE_TOWER_RECORD_COUNT 5
 
+#include "constants/rogue_gym.h"
+
+struct RogueGymData
+{
+    u8 status;                                // ROGUE_GYM_STATUS_*
+    u8 currentBattle;                         // Battle number (0 = not started, 1 = first battle)
+    u8 tier;                                  // Current difficulty tier
+    u8 numItems;                              // Number of distinct items held
+    u16 seed;                                 // Run seed
+    u16 items[ROGUE_GYM_MAX_ITEMS];           // Item IDs in roguelike inventory
+    u8 itemQuantities[ROGUE_GYM_MAX_ITEMS];   // Quantities
+    u16 totalDefeated;                        // Total enemy Pokemon defeated this run
+    u16 highScore;                            // Best battle number reached (persists across runs)
+};
+
 struct BattleFrontier
 {
     /*0x64C*/ struct EmeraldBattleTowerRecord towerPlayer;
@@ -534,6 +549,8 @@ struct BattleFrontier
     /*0xEFA*/ u8 unused_EFA;
     /*0xEFB*/ u8 unused_EFB;
     /*0xEFC*/ struct DomeMonData domePlayerPartyData[FRONTIER_PARTY_SIZE];
+    // Roguelike Gym Trainer Mode data
+    struct RogueGymData rogueGym;
 };
 
 struct ApprenticeQuestion
