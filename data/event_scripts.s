@@ -54,6 +54,7 @@
 #include "constants/pokedex.h"
 #include "constants/pokemon.h"
 #include "constants/rtc.h"
+#include "constants/rogue_gym.h"
 #include "constants/roulette.h"
 #include "constants/script_menu.h"
 #include "constants/seagallop.h"
