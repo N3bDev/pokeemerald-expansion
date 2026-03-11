@@ -134,10 +134,8 @@ static void ClearFrontierRecord(void)
 
 static void WarpToTruck(void)
 {
-    if (IS_FRLG)
-        SetWarpDestination(MAP_GROUP(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), MAP_NUM(MAP_PALLET_TOWN_PLAYERS_HOUSE_2F), WARP_ID_NONE, 6, 6);
-    else
-        SetWarpDestination(MAP_GROUP(MAP_INSIDE_OF_TRUCK), MAP_NUM(MAP_INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
+    // Warp directly to the Roguelike Gym room
+    SetWarpDestination(MAP_GROUP(MAP_BATTLE_FRONTIER_LOUNGE5), MAP_NUM(MAP_BATTLE_FRONTIER_LOUNGE5), WARP_ID_NONE, 7, 5);
     WarpIntoMap();
 }
 

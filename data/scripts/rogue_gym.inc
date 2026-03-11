@@ -12,13 +12,13 @@ RogueGym_EventScript_NPC::
 	goto_if_eq VAR_RESULT, ROGUE_GYM_STATUS_ACTIVE, RogueGym_EventScript_ResumeRun
 	goto_if_eq VAR_RESULT, ROGUE_GYM_STATUS_PAUSED, RogueGym_EventScript_ResumeRun
 	msgbox RogueGym_Text_Welcome, MSGBOX_DEFAULT
-	msgbox RogueGym_Text_WantToChallenge, MSGBOX_YESNO
+	msgbox RogueGym_Text_IntroReady, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, NO, RogueGym_EventScript_Decline
 	goto RogueGym_EventScript_StartNewRun
 
 RogueGym_EventScript_Decline::
 	msgbox RogueGym_Text_ComeBackAnytime, MSGBOX_DEFAULT
-	release
+	releaseall
 	end
 
 @ =============================================================================
@@ -169,7 +169,7 @@ RogueGym_EventScript_BetweenBattles::
 	goto_if_eq VAR_RESULT, YES, RogueGym_EventScript_BattleLoop
 	@ Player wants to take a break
 	msgbox RogueGym_Text_TakeBreak, MSGBOX_DEFAULT
-	release
+	releaseall
 	end
 
 @ =============================================================================
@@ -192,7 +192,7 @@ RogueGym_EventScript_GameOver::
 	special LoadPlayerParty
 	callnative UpdateFollowingPokemon
 	msgbox RogueGym_Text_BetterLuckNextTime, MSGBOX_DEFAULT
-	release
+	releaseall
 	end
 
 @ =============================================================================
@@ -208,7 +208,7 @@ RogueGym_EventScript_Victory::
 	roguegym_cleanup
 	special LoadPlayerParty
 	callnative UpdateFollowingPokemon
-	release
+	releaseall
 	end
 
 @ =============================================================================
@@ -223,10 +223,6 @@ RogueGym_Text_Welcome:
 	.string "But be warned - if your POKéMON\n"
 	.string "faints, it's gone forever!\p"
 	.string "How long can you hold your gym?$"
-
-RogueGym_Text_WantToChallenge:
-	.string "Would you like to take on the\n"
-	.string "ROGUELIKE GYM challenge?$"
 
 RogueGym_Text_ComeBackAnytime:
 	.string "Come back anytime you're ready\n"
@@ -322,3 +318,41 @@ RogueGym_Text_VictoryCongrats:
 	.string "No challenger could defeat you!\p"
 	.string "Your gym stands undefeated!\n"
 	.string "Congratulations, champion!$"
+
+@ =============================================================================
+@ Auto-start intro text
+@ =============================================================================
+
+RogueGym_Text_IntroWelcome:
+	.string "Welcome, trainer!\p"
+	.string "You've been chosen to run your\n"
+	.string "very own POKéMON GYM!$"
+
+RogueGym_Text_IntroExplain1:
+	.string "Here's how it works:\p"
+	.string "Challengers will come to battle\n"
+	.string "you one after another.\p"
+	.string "You'll start with a single\n"
+	.string "randomly chosen POKéMON.$"
+
+RogueGym_Text_IntroExplain2:
+	.string "After each victory, you'll earn\n"
+	.string "rewards - new POKéMON, healing\l"
+	.string "items, TMs, and more!\p"
+	.string "But beware - this is a NUZLOCKE\n"
+	.string "challenge!$"
+
+RogueGym_Text_IntroExplain3:
+	.string "If a POKéMON faints in battle,\n"
+	.string "it's gone FOREVER.\p"
+	.string "If all your POKéMON fall,\n"
+	.string "it's GAME OVER.\p"
+	.string "Survive 40 battles to become\n"
+	.string "the ultimate GYM TRAINER!$"
+
+RogueGym_Text_IntroReady:
+	.string "Are you ready to begin?$"
+
+RogueGym_Text_IntroTakeYourTime:
+	.string "Take your time.\n"
+	.string "Talk to me when you're ready!$"

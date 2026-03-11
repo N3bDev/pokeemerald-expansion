@@ -1,5 +1,27 @@
 BattleFrontier_Lounge5_MapScripts::
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, BattleFrontier_Lounge5_OnFrame
 	.byte 0
+
+BattleFrontier_Lounge5_OnFrame:
+	map_script_2 VAR_LITTLEROOT_INTRO_STATE, 0, BattleFrontier_Lounge5_EventScript_RogueGymAutoStart
+	.2byte 0
+
+BattleFrontier_Lounge5_EventScript_RogueGymAutoStart::
+	lockall
+	@ Mark intro as done so this doesn't re-trigger
+	setvar VAR_LITTLEROOT_INTRO_STATE, 99
+	msgbox RogueGym_Text_IntroWelcome, MSGBOX_DEFAULT
+	msgbox RogueGym_Text_IntroExplain1, MSGBOX_DEFAULT
+	msgbox RogueGym_Text_IntroExplain2, MSGBOX_DEFAULT
+	msgbox RogueGym_Text_IntroExplain3, MSGBOX_DEFAULT
+	msgbox RogueGym_Text_IntroReady, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, BattleFrontier_Lounge5_EventScript_RogueGymNotReady
+	goto RogueGym_EventScript_StartNewRun
+
+BattleFrontier_Lounge5_EventScript_RogueGymNotReady::
+	msgbox RogueGym_Text_IntroTakeYourTime, MSGBOX_DEFAULT
+	releaseall
+	end
 
 BattleFrontier_Lounge5_EventScript_NatureGirl::
 	lock
